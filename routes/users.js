@@ -4,9 +4,8 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.log(req.user)
-  res.render({'user':{name: req.user.displayName,
-                      image:req.user._json.image.url
-                    }
+  res.render({'user':{all: req.user
+                      }
         });
 });
 

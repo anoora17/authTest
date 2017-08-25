@@ -1,0 +1,78 @@
+npm install -g express-generator
+ express authTest
+ cd authTest && npm install
+ DEBUG=authtest:* npm start
+ npm install express-handlebars  # make sure everyting works
+ npm intsall passport --save
+ add to the app.js 
+ 
+ var passport = require('passport');
+ app.use(passport.initialize());
+app.use(passport.session());
+
+var sesstion = require('express-sesstion');
+ npm install --save express-sesstion
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++
+ app.user(sesstion({secret: 'LifeIsGood'}));
+ 
+ passport.serializeUser(function(user, done){
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done){
+  done(null,user)
+})
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+npm install passport-google-oauth2
+inorder to use setratgy we need to plug it to passport
+
+Note: oAth has diffrent stratigies to deal with diffret providers
+
+var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
+ 
+passport.use(new GoogleStrategy({
+    clientID:     GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://yourdormain:3000/auth/google/callback",
+    passReqToCallback   : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+Note about Local environment
+
+
+go to https://console.cloud.google.com/apis/ 
+crate the auth and link to localhost
+enable google+ api
+then contacts API
+
+
+add 
+passport.use(new GoogleStrategy({
+    clientID:    '895756253092-c7nsqu016mgpfij2eaa1iffqtvpngsol.apps.googleusercontent.com',
+    clientSecret: 'nOgdzkb0eYz3E-peYykAPzJr',
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    passReqToCallback : true
+  },
+  function(request, accessToken, refreshToken, profile, done) {
+  //   User.findOrCreate({ googleId: profile.id }, function (err, user) {
+  //     return done(err, user);
+  //   });
+  // }
+    done(null, profile);
+));
+
+
+then add the app.use('/auth', auth)  and app.use('/auth', auth)
+
+then go to controller create rout express 
+Avoid usage of Private IP, otherwise y
+
+ref:https://github.com/mstade/passport-google-oauth2
+http://excellencenodejsblog.com/getting-started-with-express-4-x-express-handlebar/ 

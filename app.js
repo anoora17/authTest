@@ -5,11 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-
+var port = process.env.PORT || 3000;
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth= require('./routes/auth')
-
 
 var session = require('express-session');
 
@@ -43,6 +42,11 @@ app.use('/users', users);
 app.use('/auth', auth);
 
 require('./config/passport')(app);
+
+
+app.listen(port);
+console.log('The magic happens on port ' + port);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

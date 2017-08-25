@@ -33,7 +33,28 @@
     {{/if}}
   {{/each}}
 </ul>
+<div id="login">
 
+  <h1><strong>Honey Files</strong> by Threat Stack, Inc</h1>
+{{!-- Google --}}
+  <div class="login-box shadow">
+		<ul>
+				<a href="/auth/google" class="googleplus"><i class="fa fa=google-plus"></i></a>
+	{{#each user}}
+    {{#unless this.user}}
+   <form action="/login" method='post' class='login-form'>
+
+     <i id='username-input-icon' class='icon-user'></i>
+     <input id="username" autocomplete="off" placeholder="Username" class='dark' type="text" name="username">
+
+     <i id='password-input-icon' class='icon-lock'></i>
+     <input id="password" autocomplete="off" placeholder="Password" class='dark' type="password" name="password">
+
+    <input type="submit" class='button large' value="Please, login to continue.">
+
+   </form>
+
+  </div>
 <h2>Add a Cat</h2>
 <form class="create-update-form" action="/" method="POST">
 
