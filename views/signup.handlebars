@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	  <link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+		<title>Login</title>
+	</head>
+	<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt="">
+
+
+<div id="login">
+
+  <h1><strong>Honey Files</strong> by Threat Stack, Inc</h1>
+
+  <div class="login-box shadow">
+		<ul>
+				<a href="/auth/google" class="googleplus"><i class="fa fa=google-plus"></i></a> 
+	{{#each user}}
+    {{#unless this.user}}
+   <form action="/login" method='post' class='login-form'>
+
+     <i id='username-input-icon' class='icon-user'></i>
+     <input id="username" autocomplete="off" placeholder="Username" class='dark' type="text" name="username">
+
+     <i id='password-input-icon' class='icon-lock'></i>
+     <input id="password" autocomplete="off" placeholder="Password" class='dark' type="password" name="password">
+
+    <input type="submit" class='button large' value="Please, login to continue.">
+
+   </form>
+
+  </div>
+
+   <div class="login-footer">
+     Honey File is made by Threat Stack, Inc - Free of Charge. Enjoy!<br />
+<a href="https://www.threatstack.com" target="_BLANK">https://www.threatstack.com</a>
+   </div>
+
+</div>
+</div>
+					 <a href="#" class="text-center new-account">Create an account </a>
+			 </div>
+	 </div>
+</div>
+</body>
+</html>
